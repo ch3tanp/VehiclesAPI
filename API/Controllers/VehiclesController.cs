@@ -40,8 +40,8 @@ namespace API.Controllers
 
         [HttpGet]
         //GET : api/Vehicles/id
-        [Route("api/Vehicles/{id}", Name = "GetById")]
-        public IActionResult Get(int id)
+        [Route("{id}", Name = "GetById")]
+        public IActionResult Get([FromRoute]int id)
         {
             try
             {
@@ -60,8 +60,8 @@ namespace API.Controllers
 
         // DELETE : api/Vehicles/id
         [HttpDelete]
-        [Route("api/Vehicles/{id}", Name = "DeleteById")]
-        public IActionResult Delete(int id)
+        [Route("{id}")]
+        public IActionResult Delete([FromRoute]int id)
         {
             try
             {

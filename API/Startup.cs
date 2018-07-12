@@ -61,26 +61,15 @@ namespace API
             AddTestData(dbContext);
 
             app.UseCors("AllowAllOrigins");
-            ///AllowAll CORS
-            //app.UseCors(builder =>
-            //builder.AllowAnyHeader()
-            //.AllowAnyMethod()
-            //.AllowAnyOrigin()
-            //);
-
-            ///Change default route to Vehicles controller
-            app.UseMvc(routes =>
-                   routes.MapRoute(
-                   name: "default",
-                   template: "{controller=Values}/{action=Index}/{id?}")
-            );
+            
+            
         }
         // Adding test data on initialization of database.
         private static void AddTestData(AppDbContext context)
         {
             var vehicle1 = context.Vehicles.Add(new Vehicle
             {
-                Id = 10,
+               
                 Make = "Tesla",
                 Model = "Model S",
                 Year = 2016,
@@ -88,7 +77,6 @@ namespace API
             }).Entity;
             var vehicle2 = context.Vehicles.Add(new Vehicle
             {
-                Id = 11,
                 Make = "Tesla",
                 Model = "Model S",
                 Year = 2018,
