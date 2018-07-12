@@ -30,9 +30,17 @@ namespace API
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("VehcilesDB"));
-            services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver()); 
+            services.AddCors(opt =>
+            opt.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin();
+                        builder.AllowAnyMethod();
+                        builder.AllowAnyHeader();
+                    })
+            );
+            services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-            services.AddCors();
 
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IVehicleRepository, VehicleRepository>();
@@ -52,12 +60,13 @@ namespace API
             //Initialize with test data.
             AddTestData(dbContext);
 
+            app.UseCors("AllowAllOrigins");
             ///AllowAll CORS
-            app.UseCors(builder =>
-            builder.AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowAnyOrigin()
-            );
+            //app.UseCors(builder =>
+            //builder.AllowAnyHeader()
+            //.AllowAnyMethod()
+            //.AllowAnyOrigin()
+            //);
 
             ///Change default route to Vehicles controller
             app.UseMvc(routes =>

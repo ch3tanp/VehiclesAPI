@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using API.Core.Entities;
 using API.Core.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace API.Controllers
 {
     [Produces("application/json")]
     [Route("api/Vehicles")]
+    [EnableCors("AllowAllOrigins")]
     public class VehiclesController : Controller
     {
         private readonly IVehicleRepository _vehicleRepository;
@@ -56,8 +58,9 @@ namespace API.Controllers
             }
         }
 
-        [HttpDelete]
         // DELETE : api/Vehicles/id
+        [HttpDelete]
+        [Route("api/Vehicles/{id}", Name = "DeleteById")]
         public IActionResult Delete(int id)
         {
             try
