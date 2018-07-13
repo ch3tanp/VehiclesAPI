@@ -53,9 +53,11 @@ namespace API
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseMvc();
-
+            
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=Vehicles}/{action=Get}/{id?}");
+            });
             var dbContext = app.ApplicationServices.GetRequiredService<AppDbContext>();
             //Initialize with test data.
             AddTestData(dbContext);

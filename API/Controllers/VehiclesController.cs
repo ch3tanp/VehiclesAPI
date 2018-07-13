@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     [Produces("application/json")]
-    [Route("/controller")]
+    [Route("/")]
     [EnableCors("AllowAllOrigins")]
     public class VehiclesController : Controller
     {
