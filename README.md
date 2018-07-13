@@ -1,7 +1,7 @@
 # VehiclesAPI 
 This repository contains an sample CRUD API written in C# and ASP.NET Core 2.0.
 You will need to have ASP.NET Core 2.0 installed. All the other dependencies will be downloaded from NuGet.
-
+This repository provides basic solution structure that can be used to build Domain-Driven Design (DDD)-based or simply well-factored, SOLID applications using .NET Core.
 
 # Design Decisions and Dependencies
 The goal of this sample is to provide a fairly bare-bones starter kit for new projects. It does not include every possible framework, tool, or feature that a particular enterprise application might benefit from. Its choices of technology for things like data access are rooted in what is the most common, accessible technology for most business software developers using Microsoft's technology stack. It doesn't (currently) include extensive support for things like logging, monitoring, or analytics, though these can all be added easily. Below is a list of the technology dependencies it includes, and why they were chosen. Most of these can easily be swapped out for your technology of choice, since the nature of this architecture is to support modularity and encapsulation.
