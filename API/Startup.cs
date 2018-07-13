@@ -41,7 +41,7 @@ namespace API
             );
             services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-
+            // DI
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IVehicleRepository, VehicleRepository>();
             return services.BuildServiceProvider();
@@ -54,15 +54,17 @@ namespace API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=Vehicles}/{action=Get}/{id?}");
+            });
 
             var dbContext = app.ApplicationServices.GetRequiredService<AppDbContext>();
             //Initialize with test data.
             AddTestData(dbContext);
 
             app.UseCors("AllowAllOrigins");
-            
-            
+                       
         }
         // Adding test data on initialization of database.
         private static void AddTestData(AppDbContext context)
@@ -73,14 +75,12 @@ namespace API
                 Make = "Tesla",
                 Model = "Model S",
                 Year = 2016,
-                //CreatedAt = DateTimeOffset.UtcNow
             }).Entity;
             var vehicle2 = context.Vehicles.Add(new Vehicle
             {
                 Make = "Tesla",
-                Model = "Model S",
+                Model = "Model X",
                 Year = 2018,
-                //CreatedAt = DateTimeOffset.UtcNow
             }).Entity;
 
             context.SaveChanges();

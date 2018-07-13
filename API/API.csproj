@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <StartupObject></StartupObject>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <AssemblyName>CRUD.API</AssemblyName>
+    <RootNamespace>CRUD.API</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
