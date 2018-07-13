@@ -1,5 +1,6 @@
 # VehiclesAPI 
-CRUD operations for vehicle object.
+This repository contains an sample CRUD API written in C# and ASP.NET Core 2.0.
+You will need to have ASP.NET Core 2.0 installed. All the other dependencies will be downloaded from NuGet.
 
 
 # Design Decisions and Dependencies
