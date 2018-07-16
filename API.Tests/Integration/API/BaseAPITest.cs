@@ -26,7 +26,7 @@ namespace API.Tests.Integration.API
         protected HttpClient GetClient()
         {
             var startupAssembly = typeof(Startup).GetTypeInfo().Assembly;
-            var contentRoot = GetProjectPath("src", startupAssembly);
+            var contentRoot = GetProjectPath("", startupAssembly);
             var builder = new WebHostBuilder()
                 .UseContentRoot(contentRoot)
                 .ConfigureServices(InitializeServices)

@@ -20,7 +20,7 @@ namespace API.Tests.Core.Entities
             };
             Assert.True(ValidateModel(vehicle).Count > 0);
         }
-
+        
         private IList<ValidationResult> ValidateModel(object model)
         {
             var validationResults = new List<ValidationResult>();
